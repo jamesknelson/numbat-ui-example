@@ -1,8 +1,7 @@
 import "./ButtonsPage.less"
 
 import React from "react"
-import NUI,
-       {Base,
+import {Base,
         AppBar,
         FlatButton,
         FloatingActionButton,

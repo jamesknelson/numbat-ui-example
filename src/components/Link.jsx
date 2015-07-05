@@ -21,7 +21,7 @@ export default class Link extends Base {
   }
 
 
-  isActive() {
+  get active() {
     const stateParts = this.context.currentRoute.name.split('.')
     const propsParts = this.props.to.split('.')
 
@@ -32,12 +32,9 @@ export default class Link extends Base {
   }
 
   render() {
-    const activeClass = this.isActive() ? ' '+this.props.activeClassName : ''
-
     return (
-      <a {...this.baseProps({omitKnownPropTypes: true})}
-        href={'#'+router.makePath(this.props.to, this.props.params)}
-        className={this.getComponentClasses() + activeClass}>
+      <a {...this.baseProps({classes: {[this.props.activeClassName]: this.active}})}
+        href={'#'+router.makePath(this.props.to, this.props.params)}>
         {this.props.children}
       </a>
     )
