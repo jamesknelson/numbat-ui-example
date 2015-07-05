@@ -49,15 +49,15 @@ export default class Application extends Base {
     
     switch (this.props.route.name) {
       case "about":
-        page = <AboutPage onToggleAppMenu={this.toggleAppMenu} />
+        page = <AboutPage onToggleAppMenu={this.toggleAppMenu.bind(this)} />
         break
 
       case "buttons":
-        page = <ButtonsPage onToggleAppMenu={this.toggleAppMenu} />
+        page = <ButtonsPage onToggleAppMenu={this.toggleAppMenu.bind(this)} />
         break
 
       default: 
-        page = <NotFoundPage onToggleAppMenu={this.toggleAppMenu} />
+        page = <NotFoundPage onToggleAppMenu={this.toggleAppMenu.bind(this)} />
     }
 
     // const menu = 
