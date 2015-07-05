@@ -1,16 +1,15 @@
 import "./ButtonsPage.less"
-
 import React from "react"
-import {Base,
-        AppBar,
-        FlatButton,
-        FloatingActionButton,
-        FloatingActionButtonExpander,
-        IconButton,
-        IconMenu,
-        MenuDivider,
-        MenuItem,
-        RaisedButton} from "numbat-ui"
+import Base from "../Base"
+import { AppBar,
+         FlatButton,
+         FloatingActionButton,
+         FloatingActionButtonExpander,
+         IconButton,
+         IconMenu,
+         MenuDivider,
+         MenuItem,
+         RaisedButton} from "numbat-ui"
 
 export default class ButtonsPage extends Base {
   static propTypes = {
@@ -27,7 +26,7 @@ export default class ButtonsPage extends Base {
     let counter = 1
 
     return (
-      <div {...this.baseProps({omitKnownPropTypes: true})}>
+      <div {...this.baseProps()}>
         <AppBar
           title="Buttons"
           onToggleAppMenu={this.props.onToggleAppMenu}

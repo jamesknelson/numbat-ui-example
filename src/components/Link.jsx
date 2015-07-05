@@ -1,6 +1,6 @@
 import React, {PropTypes} from "react"
 import equal from "deep-equal"
-import NUI, {Base} from "numbat-ui"
+import Base from "./Base"
 import router from "../utils/router"
 
 

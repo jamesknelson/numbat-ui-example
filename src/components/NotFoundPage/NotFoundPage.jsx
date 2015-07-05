@@ -1,16 +1,17 @@
-import "./AboutPage.less"
+import "./NotFoundPage.less"
 import React from "react"
 import Base from "../Base"
 import {AppBar} from "numbat-ui"
 
-export default class AboutPage extends Base {
+export default class NotFoundPage extends Base {
   render() {
     return (
       <div {...this.baseProps()}>
         <AppBar
-          title="Numbat UI"
+          title="Not Found"
           onToggleAppMenu={this.props.onToggleAppMenu}
         />
+        <p>If you never viewed this page, would it ever have existed?</p>
       </div>
     )
   }

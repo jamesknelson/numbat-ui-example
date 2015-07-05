@@ -1,14 +1,16 @@
 import React, {PropTypes} from "react"
-import {Base,
-        AppCanvas,
-        NavMenu,
-        NavMenuItem,
-        NavMenuDivider,
-        StandardLayout,
-        Util} from "numbat-ui"
+import { AppCanvas,
+         NavMenu,
+         NavMenuItem,
+         NavMenuDivider,
+         StandardLayout,
+         Util
+       } from "numbat-ui"
+import Base from "./Base"
 import Link from "./Link"
-import ButtonsPage from "./ButtonsPage/ButtonsPage"
 import AboutPage from "./AboutPage/AboutPage"
+import ButtonsPage from "./ButtonsPage/ButtonsPage"
+import DemoPage from "./DemoPage/DemoPage"
 import NotFoundPage from "./NotFoundPage/NotFoundPage"
 
 
@@ -70,6 +72,10 @@ export default class Application extends Base {
         page = <ButtonsPage onToggleAppMenu={this.toggleAppMenu.bind(this)} />
         break
 
+      case "demo":
+        page = <DemoPage onToggleAppMenu={this.toggleAppMenu.bind(this)} />
+        break
+
       default: 
         page = <NotFoundPage onToggleAppMenu={this.toggleAppMenu.bind(this)} />
     }
@@ -77,22 +83,27 @@ export default class Application extends Base {
     const menu = 
       <NavMenu>
         <NavMenuItem
+          iconType="help"
+          label="About"
+          targetFactory={linkTo('about')}
+          selected={this.props.route.name == "about"}
+        />
+        <NavMenuItem
           iconType="star"
           label="Buttons"
           targetFactory={linkTo('buttons')}
           selected={this.props.route.name == "buttons"}
         />
-        <NavMenuDivider />
         <NavMenuItem
-          iconType="help"
-          label="Help &amp; Feedback"
-          targetFactory={linkTo('about')}
-          selected={this.props.route.name == "about"}
+          iconType="menu"
+          label="Demo"
+          targetFactory={linkTo('demo')}
+          selected={this.props.route.name == "demo"}
         />
       </NavMenu>
 
     return (
-      <AppCanvas {...this.baseProps({omitKnownPropTypes: true})}>
+      <AppCanvas {...this.baseProps()}>
         <StandardLayout
           view={page}
           menu={menu}
