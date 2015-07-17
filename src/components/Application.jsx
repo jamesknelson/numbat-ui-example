@@ -1,4 +1,4 @@
-import React, {PropTypes} from "react"
+import React, {Component, PropTypes} from "react"
 import { AppCanvas,
          NavMenu,
          NavMenuItem,
@@ -6,11 +6,12 @@ import { AppCanvas,
          StandardLayout,
          Util
        } from "numbat-ui"
-import Base from "./Base"
+import {base} from "../utils/decorators"
 import Link from "./Link"
 import AboutPage from "./AboutPage/AboutPage"
 import ButtonsPage from "./ButtonsPage/ButtonsPage"
 import DemoPage from "./DemoPage/DemoPage"
+import InputsPage from "./InputsPage/InputsPage"
 import NotFoundPage from "./NotFoundPage/NotFoundPage"
 
 
@@ -25,7 +26,8 @@ function linkTo(to) {
 }
 
 
-export default class Application extends Base {
+@base
+export default class Application extends Component {
   static childContextTypes = {
     Actions: PropTypes.object,
     currentRoute: PropTypes.object
@@ -72,6 +74,10 @@ export default class Application extends Base {
         page = <ButtonsPage onToggleAppMenu={this.toggleAppMenu.bind(this)} />
         break
 
+      case "inputs":
+        page = <InputsPage onToggleAppMenu={this.toggleAppMenu.bind(this)} />
+        break
+
       case "demo":
         page = <DemoPage onToggleAppMenu={this.toggleAppMenu.bind(this)} />
         break
@@ -95,6 +101,12 @@ export default class Application extends Base {
           selected={this.props.route.name == "buttons"}
         />
         <NavMenuItem
+          iconType="star"
+          label="Inputs"
+          targetFactory={linkTo('inputs')}
+          selected={this.props.route.name == "inputs"}
+        />
+        <NavMenuItem
           iconType="menu"
           label="Demo"
           targetFactory={linkTo('demo')}
@@ -103,7 +115,7 @@ export default class Application extends Base {
       </NavMenu>
 
     return (
-      <AppCanvas {...this.baseProps()}>
+      <AppCanvas {...this.base()}>
         <StandardLayout
           view={page}
           menu={menu}

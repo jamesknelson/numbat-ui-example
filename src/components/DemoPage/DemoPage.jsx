@@ -1,13 +1,14 @@
 import "./DemoPage.less"
-import React from "react"
-import Base from "../Base"
+import React, {Component} from "react"
+import {base} from "../../utils/decorators"
 import { AppBar,
-         FloatingActionButton,
-         FloatingActionButtonExpander, 
+         // FloatingActionButton,
+         // FloatingActionButtonExpander, 
        } from "numbat-ui"
 
 
-class ContactCard extends Base {
+@base
+class ContactCard extends Component {
   render() {
     return (
       <ui.CardLayout
@@ -22,7 +23,8 @@ class ContactCard extends Base {
 }
 
 
-export default class DemoPage extends Base {
+@base
+export default class DemoPage extends Component {
   render() {
     const action = 
       <FloatingActionButtonExpander iconType="add">
@@ -31,7 +33,7 @@ export default class DemoPage extends Base {
       </FloatingActionButtonExpander>
 
     return (
-      <div {...this.baseProps()}>
+      <div {...this.base()}>
         <AppBar
           title="Demo"
           onToggleAppMenu={this.props.onToggleAppMenu}

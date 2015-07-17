@@ -1,10 +1,11 @@
-import React, {PropTypes} from "react"
+import React, {Component, PropTypes} from "react"
 import equal from "deep-equal"
-import Base from "./Base"
+import {base} from "../utils/decorators"
 import router from "../utils/router"
 
 
-export default class Link extends Base {
+@base
+export default class Link extends Component {
   static contextTypes = {
     Actions: PropTypes.object,
     currentRoute: PropTypes.object,
@@ -33,7 +34,7 @@ export default class Link extends Base {
 
   render() {
     return (
-      <a {...this.baseProps({classes: {[this.props.activeClassName]: this.active}})}
+      <a {...this.base({classes: {[this.props.activeClassName]: this.active}})}
         href={'#'+router.makePath(this.props.to, this.props.params)}>
         {this.props.children}
       </a>

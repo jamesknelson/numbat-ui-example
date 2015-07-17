@@ -1,12 +1,14 @@
 import "./AboutPage.less"
-import React from "react"
-import Base from "../Base"
+import React, {Component} from "react"
+import {base} from "../../utils/decorators"
 import {AppBar} from "numbat-ui"
 
-export default class AboutPage extends Base {
+
+@base
+export default class AboutPage extends Component {
   render() {
     return (
-      <div {...this.baseProps()}>
+      <div {...this.base()}>
         <AppBar
           title="Numbat UI"
           onToggleAppMenu={this.props.onToggleAppMenu}
